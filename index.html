@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fadilah Ismawati | Portofolio Web Developer</title>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS RESET & VARIABLES - CLEAN & MINIMALIST THEME */
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-light: #eff6ff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05);
+            --radius: 12px;
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* CONTAINER & SECTION LAYOUT */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        /* HEADER / NAVBAR */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(248, 250, 252, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
+        .hero-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            padding: 3rem 0;
+        }
+
+        .profile-img-container {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-card);
+            box-shadow: var(--shadow-lg);
+            background-color: #e2e8f0;
+        }
+
+        .status-badge {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: #10b981;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid var(--bg-card);
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-role {
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 0.35rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-bio {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-bottom: 1.8rem;
+            max-width: 580px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.3rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-body);
+            border-color: var(--text-muted);
+            transform: translateY(-1px);
+        }
+
+        /* ABOUT & EDUCATION SECTION */
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.8rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+        }
+
+        .edu-item {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+        }
+
+        .edu-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .edu-details h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .edu-details p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .edu-year {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 0.4rem;
+        }
+
+        /* SKILLS SECTION */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-badge {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.9rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .skill-badge:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .skill-badge i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+
+        .skill-badge span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* PROJECTS SECTION */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: var(--bg-body);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--primary-hover);
+            gap: 0.6rem;
+        }
+
+        /* CONTACT SECTION */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .social-btn {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--text-main);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.65rem 0.8rem;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #ffffff;
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        /* CUSTOM NOTIFICATION */
+        .notification-toast {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .hero-wrapper {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                padding: 1.5rem 0;
+            }
+            .hero-bio {
+                margin: 0 auto 1.5rem auto;
+            }
+            .hero-ctas {
+                justify-content: center;
+            }
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .mobile-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                border-bottom: 1px solid var(--border-color);
+                flex-direction: column;
+                padding: 1rem 1.5rem;
+                gap: 1rem;
+                box-shadow: var(--shadow-md);
+            }
+            .nav-links.show {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-code"></i>
+                Fadilah<span>.dev</span>
+            </a>
+            <button class="mobile-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navMenu">
+                <li><a href="#beranda" class="active">Beranda</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#keahlian">Keahlian</a></li>
+                <li><a href="#proyek">Proyek</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="beranda" style="border-bottom: none;">
+            <div class="hero-wrapper">
+                <div class="profile-img-container">
+                    <!-- CARA GANTI FOTO PROFIL: 
+                         Ganti atribut 'src' di bawah ini dengan link foto Anda sendiri (URL foto atau file lokal seperti 'foto-fadilah.jpg') -->
+                    <img 
+                        src="dila.jpeg" 
+                        alt="Foto Profil Fadilah Ismawati" 
+                        class="profile-img"
+                        id="userProfileImg"
+                    >
+                    <div class="status-badge" title="Tersedia untuk proyek/kolaborasi"></div>
+                </div>
+                <div class="hero-text">
+                    <span class="hero-role"><i class="fa-solid fa-graduation-cap"></i> Mahasiswi UNPAM Semester 5</span>
+                    <h1>Fadilah Ismawati</h1>
+                    <p class="hero-bio">
+                        Web Developer & Mahasiswi S1 Sistem Informasi Universitas Pamulang Kampus Kota Serang. Berfokus pada pembuatan aplikasi web yang bersih, responsif, dan mudah digunakan.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="#kontak" class="btn btn-primary">
+                            <i class="fa-solid fa-envelope"></i> Hubungi Saya
+                        </a>
+                        <a href="#proyek" class="btn btn-secondary">
+                            <i class="fa-solid fa-briefcase"></i> Lihat Portofolio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tentang">
+            <h2 class="section-title">Tentang Saya</h2>
+            <p class="section-subtitle">Latar belakang singkat dan pendidikan akademik</p>
+
+            <div class="about-card">
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                    Saya adalah mahasiswi yang antusias dalam dunia pengembangan web. Memiliki minat besar pada pembuatan antarmuka pengguna yang terstruktur, fungsional, dan estetis. Selalu bersemangat untuk mempelajari teknologi baru dan meningkatkan keterampilan pemrograman.
+                </p>
+            </div>
+
+            <div class="about-card" style="margin-bottom: 0;">
+                <div class="edu-item">
+                    <div class="edu-icon">
+                        <i class="fa-solid fa-university"></i>
+                    </div>
+                    <div class="edu-details">
+                        <h3>Universitas Pamulang (UNPAM) Kampus Kota Serang</h3>
+                        <p>S1 Sistem Informasi &bull; Semester 5</p>
+                        <span class="edu-year">2024 - Sekarang (Aktif)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="keahlian">
+            <h2 class="section-title">Keahlian Utama</h2>
+            <p class="section-subtitle">Teknologi dan tools yang sering saya gunakan</p>
+
+            <div class="skills-grid">
+                <div class="skill-badge">
+                    <i class="fa-brands fa-html5"></i>
+                    <span>HTML5</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <span>CSS3 Murni</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fa-brands fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fa-brands fa-php"></i>
+                    <span>PHP Native</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fa-solid fa-database"></i>
+                    <span>MySQL</span>
+                </div>
+                <div class="skill-badge">
+                    <i class="fa-brands fa-git-alt"></i>
+                    <span>Git & GitHub</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyek">
+            <h2 class="section-title">Proyek Pilihan</h2>
+            <p class="section-subtitle">Beberapa hasil karya web yang pernah saya buat</p>
+
+            <div class="projects-grid">
+                <!-- Proyek 1 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3>Sistem Data Akademik</h3>
+                    <p>Aplikasi pengelolaan data mahasiswa, nilai, dan mata kuliah berbasis web dengan antarmuka yang bersih.</p>
+                    <div class="project-tags">
+                        <span class="tag">PHP</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <a href="#" onclick="notify('Proyek ini dikembangkan untuk tugas akademik UNPAM.')" class="project-link">
+                        Lihat Detail <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Proyek 2 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <h3>Website E-Commerce Mini</h3>
+                    <p>Desain toko online simpel dengan keranjang belanja interaktif dan katalog produk yang responsif.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <a href="#" onclick="notify('Proyek ini merupakan latihan desain antarmuka toko online.')" class="project-link">
+                        Lihat Detail <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Proyek 3 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <h3>Company Profile Landing Page</h3>
+                    <p>Landing page profil perusahaan modern yang cepat diakses, ringan, dan ramah pengguna perangkat seluler.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">Flexbox</span>
+                        <span class="tag">Responsive</span>
+                    </div>
+                    <a href="#" onclick="notify('Proyek profil perusahaan sederhana menggunakan CSS murni.')" class="project-link">
+                        Lihat Detail <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontak">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <p class="section-subtitle">Mari berdiskusi atau terhubung melalui media sosial</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <p>Apakah Anda memiliki pertanyaan, peluang proyek, atau ingin berkenalan? Jangan ragu untuk mengirimkan pesan!</p>
+                    
+                    <div class="contact-list">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>fadilahismawati@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Serang, Banten</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://github.com" target="_blank" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" class="form-input" placeholder="Nama Anda" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="email@contoh.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" class="form-input" placeholder="Tuliskan pesan Anda di sini..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fa-solid fa-paper-plane"></i> Kirim Pesan
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div class="notification-toast" id="toast">
+        Pesan berhasil dikirim!
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Fadilah Ismawati &bull; S1 Sistem Informasi UNPAM Semester 5</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Menu Mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+
+        // Close Mobile Menu on Nav Link Click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-xmark');
+            });
+        });
+
+        // Handle Contact Form Submit (Tanpa alert())
+        function submitForm(e) {
+            e.preventDefault();
+            document.getElementById('contactForm').reset();
+            notify('Terima kasih! Pesan Anda telah terkirim.');
+        }
+
+        // Custom Toast Notification Helper Function
+        function notify(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.style.display = 'block';
+
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
